@@ -13,9 +13,10 @@ helm3 install velero \
     --set configuration.provider=aws \
     --set configuration.backupStorageLocation.name=default \
     --set configuration.backupStorageLocation.bucket=velero \
+    --set configuration.backupStorageLocation.caCert=`cat $HOME/.local/share/mkcert/rootCA.pem | base64 -w 0 && echo` \
     --set configuration.backupStorageLocation.config.region=minio-default \
     --set configuration.backupStorageLocation.config.s3ForcePathStyle=true \
-    --set configuration.backupStorageLocation.config.s3Url=http://minio-default.velero.svc.cluster.local:9000 \
+    --set configuration.backupStorageLocation.config.s3Url=https://minio-default.velero.svc.cluster.local:9000 \
     --set snapshotsEnabled=true \
     --set deployRestic=true \
     --set configuration.volumeSnapshotLocation.name=default \
@@ -25,8 +26,3 @@ helm3 install velero \
     --set initContainers[0].volumeMounts[0].mountPath=/target \
     --set initContainers[0].volumeMounts[0].name=plugins \
     vmware-tanzu/velero
-
-velero backup-location create secondary \
-    --provider aws \
-    --bucket velero \
-    --config region=minio-secondary,s3ForcePathStyle=true,s3Url=http://minio-secondary.velero.svc.cluster.local:9000
