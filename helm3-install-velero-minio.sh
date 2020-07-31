@@ -1,7 +1,7 @@
 #!/bin/bash
 helm3 repo add vmware-tanzu https://vmware-tanzu.github.io/helm-charts
 
-cat <<EOF < credentials-velero
+cat <<EOF > credentials-velero
 [default]
 aws_access_key_id = minio
 aws_secret_access_key = minio123

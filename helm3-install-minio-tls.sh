@@ -1,12 +1,12 @@
 #!/bin/bash
 helm3 repo add stable https://kubernetes-charts.storage.googleapis.com
 
-rm minio-default.velero.svc.cluster.local+1.pem
-rm minio-default.velero.svc.cluster.local+1-key.pem
+rm minio-default.velero.svc.cluster.local+2.pem
+rm minio-default.velero.svc.cluster.local+2-key.pem
 
-mkcert minio-default.velero.svc.cluster.local minio-default
+mkcert minio-default.velero.svc.cluster.local minio-default localhost
 kubectl delete secret minio-default-tls
-kubectl create secret generic minio-default-tls -n velero --from-file=public.crt=./minio-default.velero.svc.cluster.local+1.pem --from-file=private.key=./minio-default.velero.svc.cluster.local+1-key.pem
+kubectl create secret generic minio-default-tls -n velero --from-file=public.crt=./minio-default.velero.svc.cluster.local+2.pem --from-file=private.key=./minio-default.velero.svc.cluster.local+2-key.pem
 
 helm3 install minio-default \
     --create-namespace \
@@ -21,12 +21,12 @@ helm3 install minio-default \
     --set buckets[0].purge=true \
     stable/minio
 
-rm minio-secondary.velero.svc.cluster.local+1.pem
-rm minio-secondary.velero.svc.cluster.local+1-key.pem
+rm minio-secondary.velero.svc.cluster.local+2.pem
+rm minio-secondary.velero.svc.cluster.local+2-key.pem
 
-mkcert minio-secondary.velero.svc.cluster.local minio-secondary
+mkcert minio-secondary.velero.svc.cluster.local minio-secondary localhost
 kubectl delete secret minio-secondary-tls
-kubectl create secret generic minio-secondary-tls -n velero --from-file=public.crt=./minio-secondary.velero.svc.cluster.local+1.pem --from-file=private.key=./minio-secondary.velero.svc.cluster.local+1-key.pem
+kubectl create secret generic minio-secondary-tls -n velero --from-file=public.crt=./minio-secondary.velero.svc.cluster.local+2.pem --from-file=private.key=./minio-secondary.velero.svc.cluster.local+2-key.pem
 
 helm3 install minio-secondary \
     --create-namespace \
