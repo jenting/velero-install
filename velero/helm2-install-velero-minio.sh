@@ -1,5 +1,5 @@
 #!/bin/bash
-helm repo add vmware-tanzu https://vmware-tanzu.github.io/helm-charts
+helm3 repo add vmware-tanzu https://vmware-tanzu.github.io/helm-charts
 
 cat <<EOF > credentials-velero
 [default]
@@ -18,17 +18,13 @@ helm install \
     --set configuration.backupStorageLocation.config.s3ForcePathStyle=true \
     --set configuration.backupStorageLocation.config.s3Url=http://minio-default.velero.svc.cluster.local:9000 \
     --set snapshotsEnabled=true \
+    --set deployRestic=true \
     --set configuration.volumeSnapshotLocation.name=default \
     --set configuration.volumeSnapshotLocation.config.region=minio-default \
     --set initContainers[0].name=velero-plugin-for-aws \
     --set initContainers[0].image=velero/velero-plugin-for-aws:v1.1.0 \
     --set initContainers[0].volumeMounts[0].mountPath=/target \
     --set initContainers[0].volumeMounts[0].name=plugins \
-    --set configuration.features=EnableCSI \
-    --set initContainers[1].name=velero-plugin-for-csi \
-    --set initContainers[1].image=velero/velero-plugin-for-csi:v0.1.1 \
-    --set initContainers[1].volumeMounts[0].mountPath=/target \
-    --set initContainers[1].volumeMounts[0].name=plugins \
     vmware-tanzu/velero
 
 velero backup-location create secondary \

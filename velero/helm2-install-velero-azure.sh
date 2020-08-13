@@ -2,8 +2,8 @@
 helm repo add vmware-tanzu https://vmware-tanzu.github.io/helm-charts
 
 helm install \
-    --name velero \
-    --namespace velero \
+    --name=velero \
+    --namespace=velero \
     --set-file credentials.secretContents.cloud=credentials-velero \
     --set configuration.provider=azure \
     --set configuration.backupStorageLocation.name=default \
