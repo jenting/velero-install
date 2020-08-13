@@ -2,6 +2,7 @@
 helm3 repo add stable https://kubernetes-charts.storage.googleapis.com
 
 helm3 install minio-default \
+    --namespace velero \
     --create-namespace \
     --set resources.requests.memory=1Gi \
     --set persistence.enabled=false \
@@ -13,6 +14,7 @@ helm3 install minio-default \
     stable/minio
 
 helm3 install minio-secondary \
+    --namespace velero \
     --create-namespace \
     --set resources.requests.memory=1Gi \
     --set persistence.enabled=false \
