@@ -8,6 +8,7 @@ aws_secret_access_key = minio123
 EOF
 
 helm3 install velero \
+    --namespace=velero \
     --create-namespace \
     --set-file credentials.secretContents.cloud=credentials-velero \
     --set configuration.provider=aws \
