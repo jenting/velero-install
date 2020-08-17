@@ -17,6 +17,7 @@ helm install \
     --set configuration.backupStorageLocation.config.region=minio-default \
     --set configuration.backupStorageLocation.config.s3ForcePathStyle=true \
     --set configuration.backupStorageLocation.config.s3Url=http://minio-default.velero.svc.cluster.local:9000 \
+    --set configuration.backupStorageLocation.config.publicUrl=http://localhost:9000 \
     --set snapshotsEnabled=true \
     --set deployRestic=true \
     --set configuration.volumeSnapshotLocation.name=default \
