@@ -10,4 +10,4 @@ region=minio-default \
     --use-volume-snapshots=true \
     --use-restic=true \
     --snapshot-location-config region=minio-default \
-	--wait
+    --wait
