@@ -1,7 +1,7 @@
 #!/bin/bash
-helm3 repo add stable https://kubernetes-charts.storage.googleapis.com
+helm3 repo add minio https://helm.min.io/
 
-helm3 install minio-default \
+helm3 install minio-primary \
     --namespace velero \
     --create-namespace \
     --set resources.requests.memory=1Gi \
@@ -11,7 +11,7 @@ helm3 install minio-default \
     --set buckets[0].name=velero \
     --set buckets[0].policy=public \
     --set buckets[0].purge=true \
-    stable/minio
+    minio/minio
 
 helm3 install minio-secondary \
     --namespace velero \
@@ -23,4 +23,4 @@ helm3 install minio-secondary \
     --set buckets[0].name=velero \
     --set buckets[0].policy=public \
     --set buckets[0].purge=true \
-    stable/minio
+    minio/minio
