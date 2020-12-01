@@ -53,6 +53,7 @@ spec:
       volumeMounts:
       - mountPath: /target
         name: plugins
+    enablehelmhooks: false
     metrics:
       enabled: true
       scrapeInterval: 30s
