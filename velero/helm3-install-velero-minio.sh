@@ -28,6 +28,16 @@ helm3 install velero \
     --set initContainers[0].volumeMounts[0].name=plugins \
     vmware-tanzu/velero
 
+velero backup-location create default \
+    --provider aws \
+    --bucket velero \
+    --config region=minio-default,s3ForcePathStyle=true,s3Url=http://minio-default.velero.svc.cluster.local:9000
+
+velero backup-location create primary \
+    --provider aws \
+    --bucket velero \
+    --config region=minio-primary,s3ForcePathStyle=true,s3Url=http://minio-primary.velero.svc.cluster.local:9000
+
 velero backup-location create secondary \
     --provider aws \
     --bucket velero \
