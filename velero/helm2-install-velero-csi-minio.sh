@@ -26,7 +26,7 @@ helm install \
     --set initContainers[0].volumeMounts[0].name=plugins \
     --set configuration.features=EnableCSI \
     --set initContainers[1].name=velero-plugin-for-csi \
-    --set initContainers[1].image=velero/velero-plugin-for-csi:v0.1.1 \
+    --set initContainers[1].image=velero/velero-plugin-for-csi:v0.1.2 \
     --set initContainers[1].volumeMounts[0].mountPath=/target \
     --set initContainers[1].volumeMounts[0].name=plugins \
     vmware-tanzu/velero
