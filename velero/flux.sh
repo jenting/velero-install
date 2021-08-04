@@ -15,7 +15,7 @@ spec:
   values:
     image:
       repository: velero/velero
-      tag: v1.5.2
+      tag: v1.6.2
     configuration:
       backupStorageLocation:
         bucket: velero
