@@ -23,7 +23,7 @@ helm3 install velero \
     --set configuration.volumeSnapshotLocation.name=default \
     --set configuration.volumeSnapshotLocation.config.region=minio-default \
     --set initContainers[0].name=velero-plugin-for-aws \
-    --set initContainers[0].image=velero/velero-plugin-for-aws:v1.2.0 \
+    --set initContainers[0].image=velero/velero-plugin-for-aws:v1.2.1 \
     --set initContainers[0].volumeMounts[0].mountPath=/target \
     --set initContainers[0].volumeMounts[0].name=plugins \
     vmware-tanzu/velero

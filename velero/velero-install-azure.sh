@@ -7,7 +7,7 @@ velero install \
     --provider=azure \
     --bucket=$BUCKET \
     --secret-file=./credentials-velero \
-    --image=velero/velero:v1.2.0 \
+    --image=velero/velero:v1.2.1 \
     --backup-location-config=resourceGroup=$AZURE_RESOURCE_GROUP,storageAccount=$AZURE_STORAGE_ACCOUNT_ID \
     --plugins=velero/velero-plugin-for-microsoft-azure:v1.0.0 \
     --use-volume-snapshots=true \

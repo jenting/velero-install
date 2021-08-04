@@ -14,7 +14,7 @@ helm3 install velero \
     --set deployRestic=true \
     --set configuration.volumeSnapshotLocation.name=default \
     --set initContainers[0].name=velero-plugin-for-microsoft-azure \
-    --set initContainers[0].image=velero/velero-plugin-for-microsoft-azure:v1.2.0 \
+    --set initContainers[0].image=velero/velero-plugin-for-microsoft-azure:v1.2.1 \
     --set initContainers[0].volumeMounts[0].mountPath=/target \
     --set initContainers[0].volumeMounts[0].name=plugins \
     vmware-tanzu/velero
