@@ -5,7 +5,7 @@ velero install \
     --bucket=$BUCKET \
     --secret-file=./credentials-velero \
     --backup-location-config=region=$REGION \
-    --plugins=velero/velero-plugin-for-aws:v1.2.1 \
+    --plugins=velero/velero-plugin-for-aws:v1.3.0 \
     --use-volume-snapshots=true \
     --use-restic=true \
     --snapshot-location-config=region=$REGION \
