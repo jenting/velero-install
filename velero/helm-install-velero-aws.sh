@@ -1,7 +1,7 @@
 #!/bin/bash
-helm3 repo add vmware-tanzu https://vmware-tanzu.github.io/helm-charts
+helm repo add vmware-tanzu https://vmware-tanzu.github.io/helm-charts
 
-helm3 install velero \
+helm install velero \
     --namespace=velero \
     --create-namespace \
     --set-file credentials.secretContents.cloud=credentials-velero \
