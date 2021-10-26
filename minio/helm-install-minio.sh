@@ -1,7 +1,7 @@
 #!/bin/bash
-helm3 repo add minio https://helm.min.io/
+helm repo add minio https://helm.min.io/
 
-helm3 install minio-default \
+helm install minio-default \
     --namespace velero \
     --create-namespace \
     --set resources.requests.memory=1Gi \
@@ -13,7 +13,7 @@ helm3 install minio-default \
     --set buckets[0].purge=true \
     minio/minio
 
-helm3 install minio-primary \
+helm install minio-primary \
     --namespace velero \
     --create-namespace \
     --set resources.requests.memory=1Gi \
@@ -25,7 +25,7 @@ helm3 install minio-primary \
     --set buckets[0].purge=true \
     minio/minio
 
-helm3 install minio-secondary \
+helm install minio-secondary \
     --namespace velero \
     --create-namespace \
     --set resources.requests.memory=1Gi \
