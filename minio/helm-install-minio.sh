@@ -1,5 +1,5 @@
 #!/bin/bash
-helm repo add minio https://helm.min.io/
+bitnami https://charts.bitnami.com/bitnami
 
 helm install minio-default \
     --namespace velero \
@@ -11,7 +11,7 @@ helm install minio-default \
     --set buckets[0].name=velero \
     --set buckets[0].policy=public \
     --set buckets[0].purge=true \
-    minio/minio
+    bitnami/minio
 
 helm install minio-primary \
     --namespace velero \
@@ -23,7 +23,7 @@ helm install minio-primary \
     --set buckets[0].name=velero \
     --set buckets[0].policy=public \
     --set buckets[0].purge=true \
-    minio/minio
+    bitnami/minio
 
 helm install minio-secondary \
     --namespace velero \
@@ -35,4 +35,4 @@ helm install minio-secondary \
     --set buckets[0].name=velero \
     --set buckets[0].policy=public \
     --set buckets[0].purge=true \
-    minio/minio
+    bitnami/minio
