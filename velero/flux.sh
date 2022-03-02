@@ -35,7 +35,7 @@ spec:
       useSecret: true
     deployRestic: false
     initContainers:
-    - image: velero/velero-plugin-for-aws:v1.3.0
+    - image: velero/velero-plugin-for-aws:v1.4.0
       imagePullPolicy: IfNotPresent
       name: velero-plugin-for-aws
       volumeMounts:
