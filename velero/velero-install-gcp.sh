@@ -4,7 +4,7 @@ velero install \
     --provider=gcp \
     --bucket=$BUCKET \
     --secret-file=./credentials-velero \
-    --plugins=velero/velero-plugin-for-gcp:v1.4.0 \
+    --plugins=velero/velero-plugin-for-gcp:v1.5.3 \
     --use-volume-snapshots=true \
     --use-restic=true \
     --wait	
