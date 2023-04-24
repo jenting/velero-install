@@ -10,7 +10,7 @@ helm install velero \
     --set configuration.backupStorageLocation.bucket=$BUCKET \
     --set configuration.backupStorageLocation.config.region=$REGION \
     --set snapshotsEnabled=true \
-    --set deployRestic=true \
+    --set deployNodeAgent=true \
     --set configuration.volumeSnapshotLocation.name=default \
     --set configuration.volumeSnapshotLocation.config.region=$REGION \
     --set initContainers[0].name=velero-plugin-for-aws \

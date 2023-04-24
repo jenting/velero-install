@@ -11,7 +11,7 @@ helm install velero \
     --set configuration.backupStorageLocation.config.resourceGroup=$AZURE_RESOURCE_GROUP \
     --set configuration.backupStorageLocation.config.storageAccount=$AZURE_STORAGE_ACCOUNT_ID \
     --set snapshotsEnabled=true \
-    --set deployRestic=true \
+    --set deployNodeAgent=true \
     --set configuration.volumeSnapshotLocation.name=default \
     --set initContainers[0].name=velero-plugin-for-microsoft-azure \
     --set initContainers[0].image=velero/velero-plugin-for-microsoft-azure:v1.5.3 \

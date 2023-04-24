@@ -9,7 +9,7 @@ helm install velero \
     --set configuration.backupStorageLocation.name=default \
     --set configuration.backupStorageLocation.bucket=$BUCKET \
     --set snapshotsEnabled=true \
-    --set deployRestic=true \
+    --set deployNodeAgent=true \
     --set configuration.volumeSnapshotLocation.name=default \
     --set initContainers[0].name=velero-plugin-for-gcp \
     --set initContainers[0].image=velero/velero-plugin-for-gcp:v1.5.3 \

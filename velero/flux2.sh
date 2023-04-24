@@ -45,7 +45,7 @@ spec:
     credentials:
       existingSecret: cloud-credentials
       useSecret: true
-    deployRestic: false
+    deployNodeAgent: false
     initContainers:
     - image: velero/velero-plugin-for-aws:v1.5.3
       imagePullPolicy: IfNotPresent

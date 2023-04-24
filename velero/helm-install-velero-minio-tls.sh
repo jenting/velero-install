@@ -20,7 +20,7 @@ helm install velero \
     --set configuration.backupStorageLocation.config.s3Url=https://minio-default.velero.svc.cluster.local:9000 \
     --set configuration.backupStorageLocation.config.publicUrl=https://localhost:9000 \	
     --set snapshotsEnabled=true \
-    --set deployRestic=true \
+    --set deployNodeAgent=true \
     --set configuration.volumeSnapshotLocation.name=default \
     --set configuration.volumeSnapshotLocation.config.region=minio-default \
     --set initContainers[0].name=velero-plugin-for-aws \
