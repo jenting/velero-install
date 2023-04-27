@@ -13,7 +13,7 @@ helm install velero \
     --set configuration.volumeSnapshotLocation[0].name=default \
     --set configuration.volumeSnapshotLocation[0].provider=gcp \
     --set initContainers[0].name=velero-plugin-for-gcp \
-    --set initContainers[0].image=velero/velero-plugin-for-gcp:v1.5.3 \
+    --set initContainers[0].image=velero/velero-plugin-for-gcp:v1.7.0 \
     --set initContainers[0].volumeMounts[0].mountPath=/target \
     --set initContainers[0].volumeMounts[0].name=plugins \
     vmware-tanzu/velero

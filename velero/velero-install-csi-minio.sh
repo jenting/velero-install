@@ -6,7 +6,7 @@ velero install \
     --bucket=velero \
     --backup-location-config region=minio-default,s3ForcePathStyle=true,s3Url=http://minio-default.velero.svc.cluster.local:9000,publicUrl=http://localhost:9000 \
 region=minio-default \
-    --plugins=velero/velero-plugin-for-aws:v1.5.3,velero/velero-plugin-for-csi:v0.3.3 \
+    --plugins=velero/velero-plugin-for-aws:v1.7.0,velero/velero-plugin-for-csi:v0.5.0 \
     --features=EnableCSI \
     --use-volume-snapshots=true \
     --snapshot-location-config region=minio-default \
