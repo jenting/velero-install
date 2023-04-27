@@ -5,12 +5,13 @@ helm install velero \
     --namespace=velero \
     --create-namespace \
     --set-file credentials.secretContents.cloud=credentials-velero \
-    --set configuration.provider=gcp \
-    --set configuration.backupStorageLocation.name=default \
-    --set configuration.backupStorageLocation.bucket=$BUCKET \
+    --set configuration.backupStorageLocation[0].name=default \
+    --set configuration.backupStorageLocation[0].provider=gcp \
+    --set configuration.backupStorageLocation[0].bucket=$BUCKET \
     --set snapshotsEnabled=true \
     --set deployNodeAgent=true \
-    --set configuration.volumeSnapshotLocation.name=default \
+    --set configuration.volumeSnapshotLocation[0].name=default \
+    --set configuration.volumeSnapshotLocation[0].provider=gcp \
     --set initContainers[0].name=velero-plugin-for-gcp \
     --set initContainers[0].image=velero/velero-plugin-for-gcp:v1.5.3 \
     --set initContainers[0].volumeMounts[0].mountPath=/target \

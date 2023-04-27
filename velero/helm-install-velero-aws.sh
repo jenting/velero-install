@@ -5,14 +5,15 @@ helm install velero \
     --namespace=velero \
     --create-namespace \
     --set-file credentials.secretContents.cloud=credentials-velero \
-    --set configuration.provider=aws \
-    --set configuration.backupStorageLocation.name=default \
-    --set configuration.backupStorageLocation.bucket=$BUCKET \
-    --set configuration.backupStorageLocation.config.region=$REGION \
+    --set configuration.backupStorageLocation[0].name=default \
+    --set configuration.backupStorageLocation[0].provider=aws \
+    --set configuration.backupStorageLocation[0].bucket=$BUCKET \
+    --set configuration.backupStorageLocation[0].config.region=$REGION \
     --set snapshotsEnabled=true \
     --set deployNodeAgent=true \
-    --set configuration.volumeSnapshotLocation.name=default \
-    --set configuration.volumeSnapshotLocation.config.region=$REGION \
+    --set configuration.volumeSnapshotLocation[0].name=default \
+    --set configuration.volumeSnapshotLocation[0].provider=aws \
+    --set configuration.volumeSnapshotLocation[0].config.region=$REGION \
     --set initContainers[0].name=velero-plugin-for-aws \
     --set initContainers[0].image=velero/velero-plugin-for-aws:v1.5.3 \
     --set initContainers[0].volumeMounts[0].mountPath=/target \
